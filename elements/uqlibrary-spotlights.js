@@ -19,6 +19,14 @@
         value: true
       },
       /**
+       * Whether the Spotlights image carousel should auto play
+       * @type Boolean
+       */
+      autoPlay: {
+        type: Object,
+        value: true
+      },
+      /**
        * The underlying image carousel
        * @private
        */
@@ -67,6 +75,14 @@
     _spotlightsChanged: function () {
       this._carousel.slides = this.spotlights;
       this.fire('uqlibrary-spotlights-loaded');
+    },
+    /**
+     * Returns
+     * @returns {string}
+     * @private
+     */
+    _autoPlay: function () {
+      return (this.autoPlay ? 'true' : 'false');
     }
   });
 })();

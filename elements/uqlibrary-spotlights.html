@@ -1,11 +1,11 @@
 <link rel="import" href="elements.html">
 
 <!--
-`<uqlibrary-spotlights>` is a simple element that displays the opening hours for each of the libraries
+`<uqlibrary-spotlights>` is a simple element that displays an image carousel of current UQ Library Spotlights
 
 Example:
 
-    <uqlibrary-spotlights compact-view="false" auto-load="true"></uqlibrary-spotlights>
+    <uqlibrary-spotlights auto-load="true" auto-play="true"></uqlibrary-spotlights>
 
 @demo
 
@@ -39,7 +39,7 @@ Example:
         <uqlibrary-api-spotlights id="spotlightsApi"></uqlibrary-api-spotlights>
         <uqlibrary-ga id="ga" appName="Spotlights"></uqlibrary-ga>
 
-        <polymer-carousel id="carousel" slide-duration="3000"></polymer-carousel>
+        <polymer-carousel id="carousel" slide-duration="3000" auto-play="{{_autoPlay()}}"></polymer-carousel>
     </template>
     <script src="uqlibrary-spotlights.js"></script>
 </dom-module>
