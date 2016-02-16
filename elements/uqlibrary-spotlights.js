@@ -20,7 +20,7 @@
 
       // Setup event listener for Spotlights
       this.$.spotlightsApi.addEventListener('uqlibrary-api-spotlights', function(e) {
-        self._setFromAPI(e.details);
+        self._setFromAPI(e.detail);
       });
 
       if (this.autoLoad) {

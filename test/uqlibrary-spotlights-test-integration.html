@@ -20,52 +20,42 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
 
     <!-- Import the element to test -->
-    <link rel="import" href="../elements/uqlibrary-hours.html">
+    <link rel="import" href="../elements/uqlibrary-spotlights.html">
 
 </head>
 <body>
 
-<test-fixture id="hours">
+<test-fixture id="spotlights">
     <template>
-        <uqlibrary-hours auto-load="false"></uqlibrary-hours>
+        <uqlibrary-spotlights auto-load="false"></uqlibrary-spotlights>
     </template>
 </test-fixture>
 
 <script>
-    suite('<uqlibrary-hours> tests', function () {
+    suite('<uqlibrary-spotlights> tests', function () {
         var element;
 
         setup(function () {
-            document.cookie="UQLMockData=enabled";
-
-            element = fixture('hours');
+            element = fixture('spotlights');
         });
 
 
-        test('It should load data', function (done) {
-            element.addEventListener('uqlibrary-hours-loaded', function(){
-                var _items = element.$.list.items;
+        test('It should load and format API data', function (done) {
+            element.addEventListener('uqlibrary-spotlights-loaded', function () {
+                var _items = element._carousel.slides;
 
-                // Check if the List has the right items
-                expect(_items.length).to.be.equal(element.hours.length);
-                expect(_items[0].name).to.be.equal(element.hours[0].name);
+                expect(_items.length).to.be.equal(element.spotlights.length);
+                expect(_items[0].image.href).to.be.equal(element.spotlights[0].image.href);
+                expect(_items[1].image.description).to.be.equal(element.spotlights[1].image.description);
+                expect(_items[4].index).to.be.equal(5);
 
-                // Check opening hours functionality
-                var dayString = moment().format('YYYY-MM-DD');
-                var _open = moment(dayString+ ' ' + element.hours[0].open);
-                var _close = moment(dayString+ ' ' + element.hours[0].close);
-                var _now = moment();
-                expect(_items[0].times).to.be.equal(_open.format("h:mm a") + ' - ' + _close.format("h:mm a"));
-
-                expect(_items[0].class).to.be.equal( ((_open.isBefore(_now) && _close.isAfter(_now)) ? 'open' : 'closed') );
-
-                expect(_items[1].name).to.be.equal(element.hours[1].name);
-                expect(_items[1].times).to.be.equal('Open 24 hours');
+                expect(_items[4].image.description).to.be.equal('All the support IT you could want');
+                expect(_items[3].link).to.be.equal('https:\/\/www.library.uq.edu.au\/locations-hours\/fryer-library-fellowship');
 
                 done();
             });
 
-            element.$.hoursApi.get();
+            element.$.spotlightsApi.get();
         });
     });
 </script>
