@@ -1,0 +1,45 @@
+<link rel="import" href="elements.html">
+
+<!--
+`<uqlibrary-spotlights>` is a simple element that displays the opening hours for each of the libraries
+
+Example:
+
+    <uqlibrary-spotlights compact-view="false" auto-load="true"></uqlibrary-spotlights>
+
+@demo
+
+@demo demo/index.html Demo of the Full view
+@demo demo/index-compact.html Demo of the Compact view
+-->
+<dom-module id="uqlibrary-spotlights">
+
+    <style is="custom-style" include="common-styles">
+        :host {
+            font-family: var(--font-family);
+        }
+
+        /** Polymer Carousel mixins **/
+        polymer-carousel {
+            --carousel-nav-icon: {
+                background-color: var(--secondary-color-dark);
+            };
+
+            --carousel-nav-icon-active: {
+                background-color: #488200;
+            };
+
+            --carousel-auto-play-icon: {
+                color: var(--secondary-color-dark);
+            };
+        }
+    </style>
+
+    <template>
+        <uqlibrary-api-spotlights id="spotlightsApi"></uqlibrary-api-spotlights>
+        <uqlibrary-ga id="ga" appName="Spotlights"></uqlibrary-ga>
+
+        <polymer-carousel id="carousel" slide-duration="3000"></polymer-carousel>
+    </template>
+    <script src="uqlibrary-spotlights.js"></script>
+</dom-module>

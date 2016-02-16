@@ -1,0 +1,88 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>uql-ia-button</title>
+
+    <script src="../bower_components/webcomponentsjs/webcomponents.min.js"></script>
+    <script src="../bower_components/web-component-tester/browser.js"></script>
+    <script src="../bower_components/test-fixture/test-fixture-mocha.js"></script>
+    <link rel="import" href="../bower_components/test-fixture/test-fixture.html">
+
+    <!-- Import the element to test -->
+    <link rel="import" href="../elements/uqlibrary-spotlights.html">
+
+</head>
+<body>
+
+<test-fixture id="spotlights">
+    <template>
+        <uqlibrary-spotlights auto-load="false"></uqlibrary-spotlights>
+    </template>
+</test-fixture>
+
+<script>
+    var spotlights = [
+        {
+            "id": "ea31f2e0-ca03-11e5-90a9-4b663944ee97",
+            "start": "2016-02-02 00:00:00",
+            "end": "2016-02-21 23:59:59",
+            "title": "Library services for researchers",
+            "url": "https:\/\/www.library.uq.edu.au\/",
+            "img_url": "https:\/\/www.library.uq.edu.au\/_\/\/filething\/images\/get\/spotlight\/ResearchHigherDegreeStudents.jpg",
+            "img_alt": "Library services for researchers",
+            "weight": 1,
+            "active": 1
+        },
+        {
+            "id": "d52932e0-d45c-11e5-a858-cbd5f6433c89",
+            "start": "2016-02-02 00:00:00",
+            "end": "2016-12-31 23:59:59",
+            "title": "UQ Research Staff",
+            "url": "https:\/\/www.library.uq.edu.au\/library-services\/services-for-researchers",
+            "img_url": "https:\/\/www.library.uq.edu.au\/_\/\/filething\/images\/get\/spotlight\/NewStaff-spotlight-researchers.jpg",
+            "img_alt": "UQ Research Staff - Learn more about Library services & programs to assist you",
+            "weight": 1,
+            "active": 1
+        }
+    ];
+
+    suite('<uqlibrary-spotlights> tests', function () {
+        var element;
+
+        setup(function () {
+            element = fixture('spotlights');
+        });
+
+
+        test('It should load and format API data', function (done) {
+            element.addEventListener('uqlibrary-spotlights-loaded', function () {
+                var _items = element._carousel.slides;
+
+                expect(_items.length).to.be.equal(spotlights.length);
+                expect(_items[0].image.href).to.be.equal(spotlights[0].img_url);
+                expect(_items[1].image.description).to.be.equal(spotlights[1].img_alt);
+                expect(_items[1].index).to.be.equal(2);
+
+                done();
+            });
+            
+            setTimeout(function () {
+                element._setFromAPI(spotlights);
+            }, 100);
+        });
+    });
+</script>
+
+</body>
+</html>
