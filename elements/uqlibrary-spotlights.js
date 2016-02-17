@@ -27,6 +27,20 @@
         value: true
       },
       /**
+       * Time each slide is active
+       */
+      slideDuration: {
+        type: Number,
+        value: 5000
+      },
+      /**
+       * Duration of the transition animation
+       */
+      transitionDuration: {
+        type: Number,
+        value: 1000
+      },
+      /**
        * The underlying image carousel
        * @private
        */
