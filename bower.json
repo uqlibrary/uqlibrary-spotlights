@@ -13,7 +13,7 @@
     "uqlibrary-ga": "uqlibrary/uqlibrary-ga#polymer1.0",
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles#master",
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "polymer-carousel": "jwwisgerhof/polymer-carousel#0.0.3"
+    "polymer-carousel": "jwwisgerhof/polymer-carousel#0.0.7"
   },
   "devDependencies": {
     "web-component-tester": "*",
@@ -21,7 +21,6 @@
   },
   "resolutions": {
     "polymer": "^1.2.4",
-    "uqlibrary-api": "polymer1.0",
     "webcomponentsjs": "^0.7.20"
   }
 }

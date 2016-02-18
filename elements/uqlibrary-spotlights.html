@@ -39,12 +39,15 @@ Example:
         <uqlibrary-api-spotlights id="spotlightsApi"></uqlibrary-api-spotlights>
         <uqlibrary-ga id="ga" appName="Spotlights"></uqlibrary-ga>
 
+
         <polymer-carousel
                 id="carousel"
                 slide-duration$="{{slideDuration}}"
                 transition-duration$="{{transitionDuration}}"
-                auto-play$="{{_autoPlay()}}">
+                auto-play="true"
+                height-ratio="2.72">
         </polymer-carousel>
+
     </template>
     <script src="uqlibrary-spotlights.js"></script>
 </dom-module>

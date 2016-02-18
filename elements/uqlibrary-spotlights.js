@@ -19,14 +19,6 @@
         value: true
       },
       /**
-       * Whether the Spotlights image carousel should auto play
-       * @type Boolean
-       */
-      autoPlay: {
-        type: Object,
-        value: true
-      },
-      /**
        * Time each slide is active
        */
       slideDuration: {
@@ -48,9 +40,8 @@
         type: Object
       }
     },
-    ready: function() {
+    attached: function() {
       var self = this;
-      self._carousel = this.$.carousel;
 
       // Setup event listener for Spotlights
       this.$.spotlightsApi.addEventListener('uqlibrary-api-spotlights', function(e) {
@@ -60,6 +51,8 @@
       if (this.autoLoad) {
         this.$.spotlightsApi.get();
       }
+
+      self._carousel = this.$.carousel;
     },
     /**
      * Formats the given API response to carousel-ready objects and sets the spotlights
