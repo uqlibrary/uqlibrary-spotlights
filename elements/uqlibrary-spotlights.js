@@ -40,6 +40,9 @@
         type: Object
       }
     },
+    listeners: {
+      "polymer-carousel-link-clicked": "_linkClicked"
+    },
     attached: function() {
       var self = this;
 
@@ -84,12 +87,13 @@
       this.fire('uqlibrary-spotlights-loaded');
     },
     /**
-     * Returns
-     * @returns {string}
+     * Fires of a GA event when the polymer carousel was clicked
+     * @param e
      * @private
      */
-    _autoPlay: function () {
-      return (this.autoPlay ? 'true' : 'false');
+    _linkClicked: function (e) {
+      var slideTitle = this._carousel.slides[e.detail.slideNumber - 1].title;
+      this.$.ga.addEvent("Spotlight clicked", slideTitle + ". Slide Nr: " + e.detail.slideNumber);
     }
   });
 })();
