@@ -38,10 +38,28 @@
        */
       _carousel: {
         type: Object
+      },
+			/**
+       * Prefix for the google analytics category name. For example: "Home page"
+       */
+      gaCategoryPrefix: {
+        type: String,
+        value: '',
+        observer: '_gaCategoryPrefixChanged'
+      },
+			/**
+       * Holds the Google Analytics app name of this component
+       */
+      _gaAppName: {
+        type: String,
+        value: ''
       }
     },
     listeners: {
-      "polymer-carousel-link-clicked": "_linkClicked"
+      "polymer-carousel-link-clicked": "_carouselLinkClicked",
+      "polymer-carousel-resumed": "_carouselResumed",
+      "polymer-carousel-paused": "_carouselPaused",
+      "polymer-carousel-slide-changed": "_carouselSlideChanged"
     },
     attached: function() {
       var self = this;
@@ -86,14 +104,45 @@
       this._carousel.slides = this.spotlights;
       this.fire('uqlibrary-spotlights-loaded');
     },
+		/**
+     * Sets the Google Analytics app name
+     * @private
+     */
+    _gaCategoryPrefixChanged: function () {
+      this._gaAppName = this.gaCategoryPrefix + ' Spotlights';
+    },
     /**
      * Fires of a GA event when the polymer carousel was clicked
      * @param e
      * @private
      */
-    _linkClicked: function (e) {
-      var slideTitle = this._carousel.slides[e.detail.slideNumber - 1].title;
-      this.$.ga.addEvent("Spotlight clicked", slideTitle + ". Slide Nr: " + e.detail.slideNumber);
+    _carouselLinkClicked: function (e) {
+      var slide = this._carousel.slides[e.detail.slideNumber - 1];
+      if (slide.link !== '') {
+        this.$.ga.addEvent("Click", slide.link + " ("+slide.index+")");
+      }
+    },
+		/**
+     * Fires of a GA event when the polymer carousel is manually paused
+     * @private
+     */
+    _carouselPaused: function () {
+      this.$.ga.addEvent("Navigate", "Pause");
+    },
+    /**
+     * Fires of a GA event when the polymer carousel is manually resumed
+     * @private
+     */
+    _carouselResumed: function () {
+      this.$.ga.addEvent("Navigate", "Play");
+    },
+		/**
+     * Fires of a GA event when the user (manually) navigates through the slides
+     * @param e
+     * @private
+     */
+    _carouselSlideChanged: function (e) {
+      this.$.ga.addEvent("Navigate", "Pager bullet" + e.detail.slideNumber);
     }
   });
 })();
