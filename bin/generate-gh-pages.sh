@@ -25,15 +25,21 @@ git clone -b $BRANCH https://github.com/$ORG/$REPO.git --single-branch
 cd $REPO >/dev/null
 git checkout --orphan gh-pages
 
+sed -i -e "s#\.\.#bower_components#g" .bowerrc
+
 # Remove all non-relevant content
 git rm -rf .gitignore
 git rm -rf bin
 git rm -rf test
-git rm -rf .bowerrc
 
 # Bower install
-bower cache clean $REPO # ensure we're getting the latest from the desired branch.
+bower cache clean # ensure we're getting the latest from the desired branch.
 bower install
+
+# Sed it all
+sed -i -e "s#\.\./\.\./#\.\./bower_components/#g" "elements/elements.html"
+sed -i -e "s#\.\./#bower_components/#g" "index.html"
+sed -i -e "s#\.\./\.\./#\.\./bower_components/#g" "demo/index.html"
 
 # Send it all to github
 git add -A .
