@@ -29,6 +29,7 @@ git checkout --orphan gh-pages
 git rm -rf .gitignore
 git rm -rf bin
 git rm -rf test
+git rm -rf .bowerrc
 
 # Bower install
 bower cache clean $REPO # ensure we're getting the latest from the desired branch.
