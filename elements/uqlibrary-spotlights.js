@@ -4,7 +4,6 @@
     properties: {
       /**
        * Array of spotlights to show
-       * @type Array
        */
       spotlights: {
         type: Array,
@@ -56,10 +55,10 @@
       }
     },
     listeners: {
-      "polymer-carousel-link-clicked": "_carouselLinkClicked",
-      "polymer-carousel-resumed": "_carouselResumed",
-      "polymer-carousel-paused": "_carouselPaused",
-      "polymer-carousel-slide-changed": "_carouselSlideChanged"
+      "uqlibrary-carousel-link-clicked": "_carouselLinkClicked",
+      "uqlibrary-carousel-resumed": "_carouselResumed",
+      "uqlibrary-carousel-paused": "_carouselPaused",
+      "uqlibrary-carousel-slide-changed": "_carouselSlideChanged"
     },
     attached: function() {
       var self = this;
