@@ -1,5 +1,8 @@
 # uqlibrary-spotlights
 
+[![Dependency Status](https://david-dm.org/uqlibrary/uqlibrary-spotlights.svg)](https://david-dm.org/uqlibrary/uqlibrary-spotlights)
+[![Dev Dependency Status](https://david-dm.org/uqlibrary/uqlibrary-spotlights/dev-status.svg)](https://david-dm.org/uqlibrary/uqlibrary-spotlights?type=dev)
+
 uqlibrary-spotlights is a simple image carousel that fetches current Spotlights from the API
 
 Full documentation can be found at [GitHub Pages](http://uqlibrary.github.io/uqlibrary-spotlights).
