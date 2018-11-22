@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-spotlights",
-  "version": "0.0.1",
+  "version": "1.0.8",
   "keywords": [
     "seed",
     "polymer",
@@ -10,17 +10,12 @@
   "main": "elements/uqlibrary-spotlights.html",
   "dependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
-    "uqlibrary-carousel": "uqlibrary/uqlibrary-carousel#1.0.4",
-    "uqlibrary-api": "uqlibrary/uqlibrary-api#^1.0.5",
-    "uqlibrary-ga": "uqlibrary/uqlibrary-ga#^1.0.3",
-    "uqlibrary-styles": "uqlibrary/uqlibrary-styles#v1.0.0"
+    "uqlibrary-carousel": "uqlibrary/uqlibrary-carousel",
+    "uqlibrary-api": "uqlibrary/uqlibrary-api",
+    "uqlibrary-ga": "uqlibrary/uqlibrary-ga",
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles"
   },
   "devDependencies": {
-    "web-component-tester": "*",
-    "test-fixture": "PolymerElements/test-fixture#^1.0.0"
-  },
-  "resolutions": {
-    "polymer": "^1.4",
-    "webcomponentsjs": "^0.7.20"
+    "web-component-tester": "*"
   }
 }
