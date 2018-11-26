@@ -14,33 +14,33 @@ Example:
 -->
 <dom-module id="uqlibrary-spotlights">
 
-    <style is="custom-style" include="common-styles">
-        :host {
-            font-family: var(--font-family);
-        }
-
-        /** Polymer Carousel mixins **/
-        polymer-carousel {
-            --carousel-nav-icon: {
-                background-color: var(--secondary-color-dark);
-            };
-
-            --carousel-nav-icon-active: {
-                background-color: #488200;
-            };
-
-            --carousel-auto-play-icon: {
-                color: var(--secondary-color-dark);
-            };
-
-            --carousel-item-a-focus: {
-                outline: var(--focus-outline-color) auto 5px;
-                outline-offset: -4px;
-            }
-        }
-    </style>
-
     <template>
+        <style is="custom-style" include="common-styles">
+            :host {
+                font-family: var(--font-family);
+            }
+
+            /** Polymer Carousel mixins **/
+            polymer-carousel {
+                --carousel-nav-icon: {
+                    background-color: var(--secondary-color-dark);
+                };
+
+                --carousel-nav-icon-active: {
+                    background-color: #488200;
+                };
+
+                --carousel-auto-play-icon: {
+                    color: var(--secondary-color-dark);
+                };
+
+                --carousel-item-a-focus: {
+                    outline: var(--focus-outline-color) auto 5px;
+                    outline-offset: -4px;
+                }
+            }
+        </style>
+
         <uqlibrary-api-spotlights id="spotlightsApi"></uqlibrary-api-spotlights>
         <uqlibrary-ga id="ga" app-name="[[_gaAppName]]"></uqlibrary-ga>
 
