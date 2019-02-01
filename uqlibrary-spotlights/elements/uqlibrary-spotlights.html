@@ -1,0 +1,54 @@
+<link rel="import" href="elements.html">
+
+<!--
+`<uqlibrary-spotlights>` is a simple element that displays an image carousel of current UQ Library Spotlights
+
+Example:
+
+    <uqlibrary-spotlights auto-load="true" auto-play="true"></uqlibrary-spotlights>
+
+@demo
+-->
+<dom-module id="uqlibrary-spotlights">
+
+    <template>
+        <style is="custom-style" include="common-styles">
+            :host {
+                font-family: var(--font-family);
+            }
+
+            /** Polymer Carousel mixins **/
+            polymer-carousel {
+                --carousel-nav-icon: {
+                    background-color: var(--secondary-color-dark);
+                };
+
+                --carousel-nav-icon-active: {
+                    background-color: #488200;
+                };
+
+                --carousel-auto-play-icon: {
+                    color: var(--secondary-color-dark);
+                };
+
+                --carousel-item-a-focus: {
+                    outline: var(--focus-outline-color) auto 5px;
+                    outline-offset: -4px;
+                }
+            }
+        </style>
+
+        <uqlibrary-api-spotlights id="spotlightsApi"></uqlibrary-api-spotlights>
+        <uqlibrary-ga id="ga" app-name="[[_gaAppName]]"></uqlibrary-ga>
+
+        <uqlibrary-carousel
+                id="carousel"
+                slide-duration$="{{slideDuration}}"
+                transition-duration$="{{transitionDuration}}"
+                auto-play="true"
+                height-ratio="2.72">
+        </uqlibrary-carousel>
+
+    </template>
+    <script src="uqlibrary-spotlights.js"></script>
+</dom-module>

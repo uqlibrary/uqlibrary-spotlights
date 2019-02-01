@@ -1,0 +1,34 @@
+{
+  "name": "uqlibrary-carousel",
+  "version": "1.0.6",
+  "authors": [
+    "Jan-Willem Wisgerhof <jwwisgerhof@gmail.com>"
+  ],
+  "description": "",
+  "main": "elements/uqlibrary-carousel.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "https://www.github.com/uqlibrary/uqlibrary-carousel",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "node_modules",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.11.3",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.10",
+    "paper-elements": "PolymerElements/paper-elements#^1.0.7",
+    "neon-elements": "PolymerElements/neon-elements#^1.0.0",
+    "uqlibrary-styles": "uqlibrary/uqlibrary-styles",
+    "uq-wait": "uqlibrary/uq-wait"
+  },
+  "devDependencies": {
+    "web-component-tester": "*",
+    "test-fixture": "PolymerElements/test-fixture#^1.1.2"
+  },
+  "resolutions": {
+    "test-fixture": "^1.1.2"
+  }
+}

@@ -1,0 +1,120 @@
+<!-- Polymer -->
+<link rel="import" href="../../polymer/polymer.html">
+
+<!-- Polymer Elements -->
+<link rel="import" href="../../neon-animation/neon-animated-pages.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../iron-icons/iron-icons.html">
+<link rel="import" href="../../iron-icons/av-icons.html">
+<link rel="import" href="../../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../../paper-button/paper-button.html">
+
+<!-- UQ Styles -->
+<link rel="import" href="../../uqlibrary-styles/common-styles.html">
+<link rel="import" href="../../uqlibrary-styles/app-theme.html">
+
+<link rel="import" href="uqlibrary-carousel-item.html">
+
+<!--
+`<uqlibrary-carousel>` is a simple element that displays the opening hours for each of the libraries
+
+Example:
+    <uqlibrary-carousel></uqlibrary-carousel>
+
+@demo
+@demo demo/index.html Demo of the Full view
+-->
+<dom-module id="uqlibrary-carousel">
+  <template>
+    <style is="custom-style" include="common-styles">
+      :host {
+        font-size: var(--body-font-size);
+      }
+
+      #heightHackImage {
+        width: 100%;
+        opacity: 0;
+      }
+
+      div.auto-play-button, div.empty-space {
+        width: 50px;
+      }
+
+      paper-icon-button {
+        color: #666;
+      }
+
+      .nav-dots {
+        text-align: center;
+      }
+
+      .nav-dot-button {
+        min-width: 0;
+        text-align: center;
+        margin: 0;
+        padding: 14px 3px;
+
+        --paper-button-flat-keyboard-focus: {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .nav-dot {
+        border-radius: 50%;
+        height: 12px;
+        width: 12px;
+        text-decoration: none;
+        cursor: pointer;
+        background-color: #666;
+        border: 0;
+        padding: 0;
+      }
+
+      .nav-dot.active {
+        background-color: var(--available-color);
+      }
+    </style>
+
+    <!-- Main Slider View -->
+    <neon-animated-pages id="slider" selected="{{selectedSlide}}">
+      <template is="dom-repeat" items="{{slides}}">
+        <uqlibrary-carousel-item
+            slide="{{item}}"
+            transition-duration="{{transitionDuration}}"
+            height-ratio="{{heightRatio}}">
+        </uqlibrary-carousel-item>
+      </template>
+    </neon-animated-pages>
+
+    <!-- Hack to get the slide to be the correct height -->
+    <img id="heightHackImage" src$="{{slides.0.image.href}}" />
+
+    <!-- Nav and Controls -->
+    <template is="dom-if" if="{{slides.length > 1}}">
+      <div class="layout horizontal slide-controls">
+        <div class="auto-play-button">
+          <!-- Play + Pause buttons -->
+          <template is="dom-if" if="[[!_autoPlaying]]">
+            <paper-icon-button icon="av:play-arrow" aria-label="Start auto play" on-click="_togglePause"></paper-icon-button>
+          </template>
+          <template is="dom-if" if="[[_autoPlaying]]">
+            <paper-icon-button icon="av:pause" aria-label="Pause auto play" on-click="_togglePause"></paper-icon-button>
+          </template>
+        </div>
+        <div class="flex nav-dots">
+          <!-- Nav Dots -->
+          <template is="dom-repeat" items="[[slides]]">
+            <paper-button class="nav-dot-button"
+                          on-click="_navDotClicked"
+                          aria-label$="[[item.image.description]]">
+              <div class$="nav-dot {{_navDotClass(selectedSlide, item.index)}}"></div>
+            </paper-button>
+          </template>
+        </div>
+        <div class="empty-space"></div>
+      </div>
+    </template>
+
+  </template>
+  <script src="uqlibrary-carousel.js"></script>
+</dom-module>

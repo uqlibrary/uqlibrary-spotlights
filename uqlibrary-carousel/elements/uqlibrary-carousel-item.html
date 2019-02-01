@@ -1,0 +1,79 @@
+<!-- Polymer -->
+<link rel="import" href="../../polymer/polymer.html">
+
+<!-- Polymer Elements -->
+<link rel="import" href="../../paper-styles/paper-styles.html">
+<link rel="import" href="../../neon-animation/neon-animation.html">
+<link rel="import" href="../../iron-flex-layout/iron-flex-layout-classes.html">
+<link rel="import" href="../../paper-spinner/paper-spinner.html">
+
+<!-- UQ Styles -->
+<link rel="import" href="../../uqlibrary-styles/common-styles.html">
+<link rel="import" href="../../uqlibrary-styles/app-theme.html">
+
+
+<!--
+`<uqlibrary-carousel-item>` represents a single slide of the uqlibrary-carousel
+
+Example:
+
+    <uqlibrary-carousel-item image="image.jpg"></uqlibrary-carousel-item>
+-->
+<dom-module id="uqlibrary-carousel-item">
+  <template>
+    <style is="custom-style" include="common-styles">
+      :host {
+        font-family: var(--font-family);
+        font-size: var(--body-font-size);
+        z-index: 2;
+      }
+
+      a {
+        display: block;
+      }
+
+      a:focus {
+        outline: 2px solid var(--accent-color);
+      }
+
+      .slide-image {
+        width: 100%;
+      }
+
+      .loader {
+        text-align: center;
+        @apply(--layout-horizontal);
+        @apply(--layout-center);
+      }
+
+      .loader div {
+        margin: 0 auto;
+      }
+    </style>
+
+    <!-- Actual slide -->
+    <template is="dom-if" if="[[slide.loaded]]">
+      <!-- Linked slide -->
+      <template is="dom-if" if="[[slide.link]]">
+        <a href$="[[slide.link]]" aria-label$="[[slide.image.description]]" title="[[slide.image.description]]" on-click="_linkClicked">
+          <img src$="[[slide.image.href]]" alt="[[slide.image.description]]" aria-label="[[slide.image.description]]" class="slide-image" />
+        </a>
+      </template>
+      <!-- No link -->
+      <template is="dom-if" if="[[!slide.link]]">
+        <img src$="[[slide.image.href]]" alt="[[slide.image.description]]" aria-label="[[slide.image.description]]" class="slide-image" />
+      </template>
+    </template>
+
+    <template is="dom-if" if="[[!slide.loaded]]">
+      <div class="loader">
+        <div>
+          <paper-spinner active></paper-spinner><br />
+          Loading...
+        </div>
+      </div>
+    </template>
+
+  </template>
+  <script src="uqlibrary-carousel-item.js"></script>
+</dom-module>

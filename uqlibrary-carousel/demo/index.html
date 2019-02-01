@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+
+    <title>uqlibrary-carousel</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+    <link rel="import" href="../elements/uqlibrary-carousel.html">
+
+    <style type="text/css">
+        .wrapper {
+            margin: 100px auto;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 3px 3px rgba(0,0,0,0.24);
+            padding: 10px;
+            background-color: #F1F1F1;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body class="fullbleed">
+
+<div class="wrapper">
+    <uqlibrary-carousel id="polymer-carousel" auto-play="false" selected-slide="1" slide-duration="2000" transition-duration="500" height-ratio="2.66"></uqlibrary-carousel>
+</div>
+
+<script type="text/javascript">
+    HTMLImports.whenReady(function () {
+        var carousel = document.querySelector('#polymer-carousel');
+
+        carousel.slides = [
+            {
+                link: "https://www.uq.edu.au/",
+                image: {
+                    href: "https://lorempixel.com/800/300/abstract",
+                    description: "Test image"
+                }
+            },
+            {
+                link: "https://www.google.com/",
+                image: {
+                    href: "https://lorempixel.com/g/800/300/city"
+                }
+            }
+            ,
+            {
+                link: "https://www.youtube.com",
+                image: {
+                    href: "https://lorempixel.com/800/300/people"
+                }
+            },
+            {
+                link: "https://www.wisgerhof.io",
+                image: {
+                    href: "https://lorempixel.com/g/800/300/nightlife"
+                }
+            },
+            {
+                link: "https://www.test.com",
+                image: {
+                    href: "https://lorempixel.com/800/300/food"
+                }
+            }
+        ];
+    });
+</script>
+
+</body>
+</html>
