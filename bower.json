@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-spotlights",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "keywords": [
     "seed",
     "polymer",
@@ -16,6 +16,10 @@
     "uqlibrary-styles": "uqlibrary/uqlibrary-styles"
   },
   "devDependencies": {
-    "web-component-tester": "*"
+    "web-component-tester": "*",
+    "test-fixture": "PolymerElements/test-fixture#^1.1.2"
+  },
+  "resolutions": {
+    "test-fixture": "^1.1.2"
   }
 }
