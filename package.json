@@ -1,6 +1,6 @@
 {
   "name": "uqlibrary-spotlights",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "Web component to display spotlights",
   "license": "MIT",
   "main": "index.html",
@@ -32,5 +32,8 @@
     "npm": "^6.5.0",
     "node": "^11.8.0"
   },
-  "engine-strict": true
+  "engine-strict": true,
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
 }
